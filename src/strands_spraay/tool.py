@@ -111,7 +111,7 @@ def _calculate_fee(total_wei: int) -> int:
     return (total_wei * PROTOCOL_FEE_BPS) // 10_000
 
 
-def _build_and_send(w3, account, tx) -> str:  # type: ignore[no-untyped-def]
+def _build_and_send(w3, account, tx) -> str:  # type: ignore[no-untyped-def, no-any-return]
     """Sign and send a transaction, return the tx hash hex string."""
     tx["nonce"] = w3.eth.get_transaction_count(account.address)
     tx["gas"] = int(w3.eth.estimate_gas(tx) * 1.1)  # 10% buffer
