@@ -122,7 +122,7 @@ def _build_and_send(w3, account, tx) -> str:  # type: ignore[no-untyped-def]
     return w3.to_hex(tx_hash)
 
 
-def _ensure_approval(w3, account, token_addr: str, needed: int) -> str | None:  # type: ignore[no-untyped-def]
+def _ensure_approval(w3, account, token_addr: str, needed: int) -> str | None:  # type: ignore[no-untyped-def, no-any-return]
     """Check allowance and approve if necessary. Returns approval tx hash or None."""
     token_contract = w3.eth.contract(address=token_addr, abi=ERC20_ABI)
     allowance = token_contract.functions.allowance(account.address, SPRAAY_CONTRACT_ADDRESS).call()
