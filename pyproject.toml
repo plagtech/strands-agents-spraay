@@ -3,16 +3,16 @@ requires = ["hatchling", "hatch-vcs"]
 build-backend = "hatchling.build"
 
 [project]
-name = "strands-template"
+name = "strands-agents-spraay"
 dynamic = ["version"]
-description = "Your package description"
+description = "Spraay batch payment tool for Strands Agents — send ETH/ERC-20 tokens to up to 200 recipients in one transaction on Base."
 readme = "README.md"
 requires-python = ">=3.10"
 license = {text = "Apache-2.0"}
 authors = [
-    {name = "Your Name", email = "your.email@example.com"}
+    {name = "plagtech", email = "plagtech@users.noreply.github.com"}
 ]
-keywords = ["strands", "agents", "ai", "tool"]
+keywords = ["strands", "agents", "ai", "tool", "crypto", "payments", "batch", "base", "ethereum", "web3"]
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
@@ -26,14 +26,14 @@ classifiers = [
 
 dependencies = [
     "strands-agents>=1.0.0",
-    "pydantic>=2.0.0",
+    "web3>=6.0.0",
 ]
 
 [project.urls]
-Homepage = "https://github.com/yourusername/strands-template"
-Documentation = "https://github.com/yourusername/strands-template#readme"
-Repository = "https://github.com/yourusername/strands-template"
-Issues = "https://github.com/yourusername/strands-template/issues"
+Homepage = "https://github.com/plagtech/strands-agents-spraay"
+Documentation = "https://github.com/plagtech/strands-agents-spraay#readme"
+Repository = "https://github.com/plagtech/strands-agents-spraay"
+Issues = "https://github.com/plagtech/strands-agents-spraay/issues"
 
 [project.optional-dependencies]
 dev = [
@@ -48,7 +48,7 @@ dev = [
 source = "vcs"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/strands_template"]
+packages = ["src/strands_spraay"]
 
 [tool.hatch.envs.default]
 dependencies = [
@@ -67,23 +67,11 @@ prepare = ["format", "lint", "typecheck", "test"]
 
 [tool.ruff]
 line-length = 120
-include = ["src/**/*.py", "tests/**/*.py"]
 
 [tool.ruff.lint]
-select = [
-    "E",  # pycodestyle
-    "F",  # pyflakes
-    "I",  # isort
-    "B",  # flake8-bugbear
-]
+select = ["E", "F", "I", "W"]
 
 [tool.mypy]
 python_version = "3.10"
 warn_return_any = true
 warn_unused_configs = true
-ignore_missing_imports = true
-
-[tool.pytest.ini_options]
-testpaths = ["tests"]
-pythonpath = ["src"]
-asyncio_mode = "auto"
